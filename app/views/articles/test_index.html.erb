@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Js</title>
+</head>
+<body>
+  <header id="main-header" class="bg-success text-white p-4 mb-3">
+    <div class="container">
+      <h1 id="hedaer-title">Item Lister</h1>
+    </div>
+  </header>
+    <div> 
+      <div id="main">
+        <h2>Add Items</h2>
+        <form>
+          <input type="text">
+          <button type="submit" value="Submit">submit</button>         
+        </form>
+        <button type="checkbox" id="checkbox1" >hide</button>
+        <button type="checkbox" id="checkbox2" >show</button>
+        <p>This is our list</p>
+        <h2 class="title">Items</h2>
+        <ul id="items" class="list-group">
+          <li class="list-group-item">Item 1</li>
+          <li class="list-group-item">Item 2</li>
+          <li class="list-group-item">Item 3</li>
+          <li class="list-group-item">Item 4</li>
+        </ul>
+        <p>This is the end of the list</p>
+      </div>
+    </div>
+</body>
+</html>
+
+<script>
+  $(document).ready(function(){
+    $("#checkbox1").click(function(){
+      $("p").css('display','none');
+    });
+    $("#checkbox2").click(function(){
+      $("p").show();
+    });
+    $("input").focus(function(){
+      $(this).css("background-color", "#cccccc")
+    })
+    $("input").mouseenter(function(){
+      alert("you entered form!")
+    })
+  });  
+</script>
