@@ -17,8 +17,9 @@
           <input type="text">
           <button type="submit" value="Submit">submit</button>         
         </form>
-        <button type="checkbox" id="checkbox1" >hide</button>
-        <button type="checkbox" id="checkbox2" >show</button>
+        <button id="toggleButton">Show</button>
+        <!-- <button type="checkbox" id="checkbox1" >hide</button>
+        <button type="checkbox" id="checkbox2" >show</button> -->
         <p>This is our list</p>
         <h2 class="title">Items</h2>
         <ul id="items" class="list-group">
@@ -35,11 +36,14 @@
 
 <script>
   $(document).ready(function(){
-    $("#checkbox1").click(function(){
-      $("p").css('display','none');
-    });
-    $("#checkbox2").click(function(){
-      $("p").show();
+    $("#toggleButton").click(function(){
+      $("p").toggle(); 
+      if ($("p").is(":visible")) {
+        $("#toggleButton").text("Hide");
+      } else {
+        $("#toggleButton").text("Show");
+      }
+      });
     });
     $("input").focus(function(){
       $(this).css("background-color", "#cccccc")
@@ -47,5 +51,5 @@
     $("input").mouseenter(function(){
       alert("you entered form!")
     })
-  });  
+    
 </script>
