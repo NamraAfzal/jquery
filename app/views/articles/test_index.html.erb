@@ -6,7 +6,7 @@
 </head>
 <body>
   <header id="main-header" class="bg-success text-white p-4 mb-3">
-    <div class="container">
+    <div class="container" data-controller="user-name">
       <h1 id="hedaer-title">Item Lister</h1>
     </div>
   </header>
@@ -14,7 +14,7 @@
       <div id="main">
         <h2>Add Items</h2>
         <form>
-          <input type="text">
+          <input type="text" data-user-name-target="input" data-action="click->user-name#getUserName">
           <button type="submit" value="Submit">submit</button>         
         </form>
         <button type="checkbox" id="checkbox1" >hide</button>
@@ -28,24 +28,19 @@
           <li class="list-group-item">Item 4</li>
         </ul>
         <p>This is the end of the list</p>
+        <div data-controller="user-name"> 
+          <input type="checkbox" id="all" name="all" value="all" data-user-name-target="parent" data-action="change->user-name#toggleChildren">
+          <label for="all"> Select All</label><br>
+          <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" data-user-name-target="child" data-action="change->user-name#toggleParent">
+          <label for="vehicle1"> I have a bike</label><br>
+          <input type="checkbox" id="vehicle2" name="vehicle2" value="Car" data-user-name-target="child" data-action="change->user-name#toggleParent">
+          <label for="vehicle2"> I have a car</label><br>
+          <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat" data-user-name-target="child" data-action="change->user-name#toggleParent">
+          <label for="vehicle3"> I have a boat</label><br>
+        </div>
       </div>
     </div>
 </body>
 </html>
 
-<script>
-  $(document).ready(function(){
-    $("#checkbox1").click(function(){
-      $("p").css('display','none');
-    });
-    $("#checkbox2").click(function(){
-      $("p").show();
-    });
-    $("input").focus(function(){
-      $(this).css("background-color", "#cccccc")
-    })
-    $("input").mouseenter(function(){
-      alert("you entered form!")
-    })
-  });  
-</script>
+
