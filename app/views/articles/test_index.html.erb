@@ -79,9 +79,29 @@
           <button data-action="click->dropdown#closeDropdown" data-dropdown-target="closeButton" class="bg-zinc-400">
             close dropdown</button>
         </div>
+        <button>click me</button>
       </div>
     </div>
 </body>
 </html>
 
+<script>
+  $(document).ready(function(){
+    $("#checkbox1").click(function(){
+      $("p").css('display','none');
+    });
+    $("#checkbox2").click(function(){
+      $("p").show();
+    });
+    $("input").focus(function(){
+      $(this).css("background-color", "#cccccc")
+    })
+    $("input").mouseenter(function(){
+      alert("you entered form!")
+    })
+    $("button").click(function(){
+      $(this).hide();
+    })
+  });  
+</script>
 
