@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="user-name"
 export default class extends Controller {
   static targets = ["parent", "child"]
-
+  
 
   connect() {
     this.parentTarget.checked = false
@@ -23,8 +23,7 @@ export default class extends Controller {
     } else{
       this.parentTarget.checked = true
     }
-    // this.childTargets.map(x => x.checked)
-    // console.log(this.childTargets.map(x => x.checked).includes(false))
   }
+  
   
 }

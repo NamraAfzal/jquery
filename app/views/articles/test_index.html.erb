@@ -6,16 +6,29 @@
 </head>
 <body>
   <header id="main-header" class="bg-success text-white p-4 mb-3">
-    <div class="container" data-controller="user-name">
+    <div class="container">
       <h1 id="hedaer-title">Item Lister</h1>
     </div>
   </header>
     <div> 
-      <div id="main">
+      <div id="main" data-controller="dropdown" data-dropdown-open-value="true">
         <h2>Add Items</h2>
         <form>
-          <input type="text" data-user-name-target="input" data-action="click->user-name#getUserName">
-          <button type="submit" value="Submit">submit</button>         
+          <div  >
+            <form name="form1" id="form1" action="/action_page.php">
+              Subjects: <select name="subject" id="subject">
+                <option value="" selected="">passcode</option>
+                <option value="" selected="">enter</option>
+                <option value="" selected="">block</option>
+              </select>
+              <br><br>
+            </form>
+            <div >
+              <label for="pwd">Password</label><br>
+              <input type="password" id="pwd" name="pwd"><br>
+            </div>
+          </div>
+          <button type="submit" value="Submit">submit</button><br>         
         </form>
         <button type="checkbox" id="checkbox1" >hide</button>
         <button type="checkbox" id="checkbox2" >show</button>
@@ -37,6 +50,18 @@
           <label for="vehicle2"> I have a car</label><br>
           <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat" data-user-name-target="child" data-action="change->user-name#toggleParent">
           <label for="vehicle3"> I have a boat</label><br>
+          </br>
+          <div data-action="click->dropdown#toggleDropdown">
+            Toggle the dropdown
+          </div>
+          <div data-dropdown-target="dropdownContent">
+            <p>this is dropdown controller</p>
+          </div>
+          <div role="button" data-action="click->dropdown#openDropdown" data-dropdown-target="openButton">
+            Click to open
+          </div>
+          <button data-action="click->dropdown#closeDropdown" data-dropdown-target="closeButton">
+            close dropdown</button>
         </div>
       </div>
     </div>
