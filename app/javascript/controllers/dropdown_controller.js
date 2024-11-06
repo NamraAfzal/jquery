@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="dropdown"
 export default class extends Controller {
-  static targets = ["dropdownContent","closeButton", "openButton"]
+  static targets = ["dropdownContent","closeButton", "openButton", "active"]
   static values = { open: Boolean }
   connect() {
     this.closeDropdown()
@@ -21,8 +21,11 @@ export default class extends Controller {
   openDropdown(){
     this.dropdownContentTarget.hidden = false
     try{
-    this.closeButtonTarget.hidden = false
-    this.openButtonTarget.hidden = true } catch {}
+    this.openButtonTarget.hidden = true
+    this.closeButtonTarget.hidden = false } catch {}
+    try {
+      this.activeTarget.classList.add("bg-zinc-400")
+    } catch {}
 
   }
 
@@ -31,5 +34,8 @@ export default class extends Controller {
     try{
     this.openButtonTarget.hidden = false
     this.closeButtonTarget.hidden = true } catch {}
+    try {
+      this.activeTarget.classList.remove("bg-zinc-400")
+    } catch{}
   }
 }
