@@ -11,11 +11,24 @@
     </div>
   </header>
     <div> 
-      <div id="main">
+      <div id="main" data-controller="dropdown" >
         <h2>Add Items</h2>
         <form>
-          <input type="text">
-          <button type="submit" value="Submit">submit</button>         
+          <div  >
+            <form name="form1" id="form1" action="/action_page.php">
+              Subjects: <select name="subject" id="subject">
+                <option value="" selected="">passcode</option>
+                <option value="" selected="">enter</option>
+                <option value="" selected="">block</option>
+              </select>
+              <br><br>
+            </form>
+            <div >
+              <label for="pwd">Password</label><br>
+              <input type="password" id="pwd" name="pwd"><br>
+            </div>
+          </div>
+          <button type="submit" value="Submit">submit</button><br>         
         </form>
         <button type="checkbox" id="checkbox1" >hide</button>
         <button type="checkbox" id="checkbox2" >show</button>
@@ -28,6 +41,45 @@
           <li class="list-group-item">Item 4</li>
         </ul>
         <p>This is the end of the list</p>
+        <div data-controller="user-name"> 
+          <input type="checkbox" id="all" name="all" value="all" data-user-name-target="parent" data-action="change->user-name#toggleChildren">
+          <label for="all"> Select All</label><br>
+          <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" data-user-name-target="child" data-action="change->user-name#toggleParent">
+          <label for="vehicle1"> I have a bike</label><br>
+          <input type="checkbox" id="vehicle2" name="vehicle2" value="Car" data-user-name-target="child" data-action="change->user-name#toggleParent">
+          <label for="vehicle2"> I have a car</label><br>
+          <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat" data-user-name-target="child" data-action="change->user-name#toggleParent">
+          <label for="vehicle3"> I have a boat</label><br>
+          </br>
+          <h2>Date Field</h2>
+
+          <p>The <strong>input type="date"</strong> is used for input fields that should contain a date.</p>
+
+          <form action="/action_page.php">
+            <label for="birthday">Birthday:</label>
+            <input type="date" id="birthday" name="birthday">
+            <input type="submit" value="Submit">
+          </form>
+        </br>
+          <div data-action="mouseenter->dropdown#toggleDropdown mouseleave->dropdown#toggleDropdown" data-dropdown-target="active" data-dropdown-open-value="false">
+            hover tooltip 
+          </div>
+          <div data-dropdown-target="dropdownContent" >
+            <p>this is dropdown controller</p>
+          </div>
+          <div data-action="click->dropdown#toggleDropdown" data-dropdown-target="active" data-dropdown-open-value="true">
+            Toggle the dropdown 
+          </div>
+          <!-- <div data-dropdown-target="dropdownContent">
+            <p>this is dropdown controller</p>
+          </div> -->
+          <div role="button" data-action="click->dropdown#openDropdown" data-dropdown-target="openButton">
+            Click to open
+          </div>
+          <button data-action="click->dropdown#closeDropdown" data-dropdown-target="closeButton" class="bg-zinc-400">
+            close dropdown</button>
+        </div>
+        <button>click me</button>
       </div>
     </div>
 </body>
@@ -47,5 +99,9 @@
     $("input").mouseenter(function(){
       alert("you entered form!")
     })
+    $("button").click(function(){
+      $(this).hide();
+    })
   });  
 </script>
+
